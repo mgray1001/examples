@@ -12,12 +12,16 @@
              http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file-2.0.xsd">
 
 
-    <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples.demo2"/>
+    <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples.error"/>
 
     <context:annotation-config/>
 
 
- 
+    <channel id="errorChannel" />
+    
+    <service-activator input-channel="errorChannel" ref="errorServiceActivator"/>
+
+
     <file:inbound-channel-adapter
             directory="#{systemProperties['user.home']}/Desktop/inbound/"
             channel="files"
@@ -25,7 +29,7 @@
             filename-pattern="^new.*csv"
             >
         <poller>
-            <cron-trigger expression="*/20 * * * * *"/>
+            <cron-trigger expression="*/10 * * * * *"/>
         </poller>
 
 
@@ -33,10 +37,8 @@
 
     <publish-subscribe-channel id="files"/>
 
-<!--
-    <channel id="files"/>
--->
+    <service-activator input-channel="files" ref="errorCausingActivator" />
 
-    <service-activator input-channel="files" ref="demo2ServiceActivator"/>
 
+   
 </beans:beans>

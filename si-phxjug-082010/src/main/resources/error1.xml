@@ -12,12 +12,16 @@
              http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file-2.0.xsd">
 
 
-    <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples.demo2"/>
+    <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples.error"/>
 
     <context:annotation-config/>
 
 
- 
+    <channel id="myCustomErrorChannel"/>
+
+    <service-activator input-channel="myCustomErrorChannel" ref="errorServiceActivator"/>
+
+
     <file:inbound-channel-adapter
             directory="#{systemProperties['user.home']}/Desktop/inbound/"
             channel="files"
@@ -25,18 +29,22 @@
             filename-pattern="^new.*csv"
             >
         <poller>
-            <cron-trigger expression="*/20 * * * * *"/>
+            <cron-trigger expression="*/10 * * * * *"/>
         </poller>
-
-
     </file:inbound-channel-adapter>
 
-    <publish-subscribe-channel id="files"/>
-
-<!--
     <channel id="files"/>
--->
 
-    <service-activator input-channel="files" ref="demo2ServiceActivator"/>
+    <header-enricher input-channel="files" output-channel="enrichedFiles">
+        <error-channel overwrite="true" ref="myCustomErrorChannel"/>
+    </header-enricher>
+
+    <channel id="enrichedFiles"/>
+
+    <service-activator input-channel="enrichedFiles" ref="errorCausingActivator"   />
+
+
+
+
 
 </beans:beans>
