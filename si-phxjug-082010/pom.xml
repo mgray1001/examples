@@ -17,7 +17,7 @@
         <cxf.version>2.2.6</cxf.version>
         <spring.batch.version>2.1.1.RELEASE</spring.batch.version>
         <activemq.version>3.2.4</activemq.version>
-        <spring.integration.version>1.0.3.RELEASE</spring.integration.version>
+        <spring.integration.version>2.0.0.M6</spring.integration.version>
         <dbcp.version>1.2.2</dbcp.version>
         <!--<si.version>1.0.3.RELEASE</si.version>-->
         <si.version>2.0.0.M6</si.version>
@@ -91,11 +91,7 @@
                 <artifactId>spring-ws-support</artifactId>
                 <version>${spring.ws.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.jbpm.jbpm4</groupId>
-                <artifactId>jbpm-jpdl</artifactId>
-                <version>4.3</version>
-            </dependency>
+     
             <dependency>
                 <artifactId>args4j</artifactId>
                 <groupId>args4j</groupId>
@@ -296,11 +292,7 @@
                 </exclusions>
             </dependency>
             
-            <dependency>
-                <groupId>org.jboss.javaee</groupId>
-                <artifactId>jboss-jca-api</artifactId>
-                <version>1.5.0.CR2</version>
-            </dependency>
+        
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -492,11 +484,7 @@
                 <artifactId>tiles-servlet</artifactId>
                 <version>2.1.2</version>
             </dependency>
-            <dependency>
-                <groupId>apache-taglibs</groupId>
-                <artifactId>standard</artifactId>
-                <version>1.1.2</version>
-            </dependency>
+         
             <dependency>
                 <groupId>velocity</groupId>
                 <artifactId>velocity</artifactId>
@@ -512,11 +500,7 @@
                 <artifactId>jackson-mapper-asl</artifactId>
                 <version>1.4.2</version>
             </dependency>
-            <dependency>
-                <groupId>rome</groupId>
-                <artifactId>rome</artifactId>
-                <version>1.0</version>
-            </dependency>
+           
             <dependency>
                 <groupId>com.lowagie</groupId>
                 <artifactId>itext</artifactId>
@@ -639,11 +623,11 @@
                 <artifactId>spring-jms</artifactId>
                 <version>${spring.version}</version>
             </dependency>
-            <dependency>
+            <!--<dependency>
                 <version>1.1</version>
                 <groupId>javax.jms</groupId>
                 <artifactId>jms</artifactId>
-            </dependency>
+            </dependency>-->
             <dependency>
                 <version>3.6</version>
                 <groupId>org.apache.xbean</groupId>
@@ -735,10 +719,7 @@
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-support</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.jbpm.jbpm4</groupId>
-            <artifactId>jbpm-jpdl</artifactId>
-        </dependency>
+         
         <dependency>
             <artifactId>args4j</artifactId>
             <groupId>args4j</groupId>
@@ -914,10 +895,7 @@
             </exclusions>
         </dependency>
      
-        <dependency>
-            <groupId>org.jboss.javaee</groupId>
-            <artifactId>jboss-jca-api</artifactId>
-        </dependency>
+     
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -1073,10 +1051,7 @@
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-servlet</artifactId>
         </dependency>
-        <dependency>
-            <groupId>apache-taglibs</groupId>
-            <artifactId>standard</artifactId>
-        </dependency>
+   
         <dependency>
             <groupId>velocity</groupId>
             <artifactId>velocity</artifactId>
@@ -1089,10 +1064,10 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>rome</groupId>
             <artifactId>rome</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.lowagie</groupId>
             <artifactId>itext</artifactId>
@@ -1192,10 +1167,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>javax.jms</groupId>
             <artifactId>jms</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.xbean</groupId>
             <artifactId>xbean-spring</artifactId>
@@ -1233,8 +1208,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <groupId>org.apache.maven.plugins</groupId>
                 <configuration>
-                    <source>6</source>
-                    <target>6</target>
+                    <source>5</source>
+                    <target>5</target>
                 </configuration>
             </plugin>
         </plugins>

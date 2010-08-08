@@ -7,6 +7,6 @@ public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("demo1.xml");
 
-        classPathXmlApplicationContext.start() ;
+        classPathXmlApplicationContext.start();
     }
 }

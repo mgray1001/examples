@@ -9,27 +9,27 @@
              http://www.springframework.org/schema/context/spring-context-3.0.xsd
              http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
              http://www.springframework.org/schema/integration/jms http://www.springframework.org/schema/integration/jms/spring-integration-jms-2.0.xsd
-             http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file-1.0.xsd">
+             http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file-2.0.xsd">
 
 
-    <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples"/>
+    <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples.demo1"/>
 
     <context:annotation-config/>
 
-    <poller id="poller" default="true">
-        <interval-trigger time-unit="SECONDS" interval="10"/>
-    </poller>
-
-
-    <channel id="inboundFileChannel"/>
-
     <file:inbound-channel-adapter
             directory="#{systemProperties['user.home']}/Desktop/inbound/"
-            channel="inboundFileChannel"
+            channel="files"
             auto-create-directory="true"
             filename-pattern="^new.*csv"
-            />
+            >
+        <poller>
+            <interval-trigger interval="10" time-unit="SECONDS"/>
 
-    <service-activator input-channel="inboundFileChannel" ref="demo1ServiceActivator"/>
+        </poller>
+    </file:inbound-channel-adapter>
+
+    <channel id="files"/>
+
+    <service-activator input-channel="files" ref="demo1ServiceActivator"/>
 
 </beans:beans>
