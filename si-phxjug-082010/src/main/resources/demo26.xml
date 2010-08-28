@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+		xmlns="http://www.springframework.org/schema/integration"
+		xmlns:beans="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:util="http://www.springframework.org/schema/util"
+		xmlns:xmpp="http://www.springframework.org/schema/integration/xmpp"
+		xmlns:tool="http://www.springframework.org/schema/tool"
+		xmlns:lang="http://www.springframework.org/schema/lang"
+		xsi:schemaLocation="http://www.springframework.org/schema/integration/xmpp
+        http://www.springframework.org/schema/integration/xmpp/spring-integration-xmpp.xsd
+                        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+					 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+						http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool-3.0.xsd
+						http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.0.xsd">
+
+
+	<beans:bean class="org.springframework.integration.aop.PublisherAnnotationBeanPostProcessor"/>
+
+	<context:property-placeholder location="file:///${user.home}/Desktop/xmpp.properties"/>
+
+    <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples.demo25"/>
+
+    <context:annotation-config/>
+
+
+	<!-- XMPP example -->
+	<xmpp:xmpp-connection
+		id="xmppConn"
+		user="${user.2.login}"
+		subscription-mode="accept_all"
+		password="${user.2.password}"
+		host="${user.2.host}"
+		port="${user.2.port}"
+		resource="${user.2.resource}"
+		sasl-mechanism-supported="${user.2.sasl.mechanism}"
+		sasl-mechanism-supported-index="${user.2.sasl.index}"
+		service-name="${user.2.service}"
+	/>
+
+	<channel id="outboundIM"/>
+
+
+
+	<xmpp:message-outbound-channel-adapter channel="outboundIM" xmpp-connection="xmppConn"/>
+
+
+
+	<gateway service-interface="org.sudoinit5.mgray.springintegration.examples.demo26.GatewayMediaService" id="gatewayMediaService" />
+
+
+
+</beans:beans>
+
+
+
