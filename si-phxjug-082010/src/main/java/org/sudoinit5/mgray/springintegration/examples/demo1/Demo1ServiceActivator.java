@@ -8,8 +8,9 @@ import java.io.File;
 
 @Component
 public class Demo1ServiceActivator {
+
     @ServiceActivator
-    public void demoReceiveFile(File _f) {
-        System.out.println("Filename and path: " + _f.getAbsolutePath());
+    public void demoReceiveFile(File file) {
+        System.out.println("Filename and path: " + file.getAbsolutePath());
     }
 }
