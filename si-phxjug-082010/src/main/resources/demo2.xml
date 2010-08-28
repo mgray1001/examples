@@ -12,31 +12,21 @@
              http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file-2.0.xsd">
 
 
-    <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples.demo2"/>
 
     <context:annotation-config/>
 
+	<poller default="true" fixed-rate="1000"/>
 
- 
-    <file:inbound-channel-adapter
-            directory="#{systemProperties['user.home']}/Desktop/inbound/"
-            channel="files"
-            auto-create-directory="true"
-            filename-pattern="^new.*csv"
-            >
-        <poller>
-            <cron-trigger expression="*/20 * * * * *"/>
-        </poller>
+	<channel id="inboundChannel">
+		<queue capacity="10"/>
+	</channel>
 
 
-    </file:inbound-channel-adapter>
+	<beans:bean class="org.sudoinit5.mgray.springintegration.examples.demo2.SimpleSendingClient"/>
 
-    <publish-subscribe-channel id="files"/>
+	<service-activator input-channel="inboundChannel" ref="listener" />
 
-<!--
-    <channel id="files"/>
--->
+	<beans:bean id="listener" class="org.sudoinit5.mgray.springintegration.examples.demo2.MessageListener"/>
 
-    <service-activator input-channel="files" ref="demo2ServiceActivator"/>
 
 </beans:beans>
