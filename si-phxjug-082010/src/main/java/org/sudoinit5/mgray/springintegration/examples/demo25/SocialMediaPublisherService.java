@@ -11,10 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SocialMediaPublisherService {
 
-	@Publisher(channel = "outboundTwitterDirectMessages")
-	public String sendTwitterDirectMessage(
-			@Header(TwitterHeaders.TWITTER_DM_TARGET_USER_ID) String userToDirectMessage,
-			@Payload String status ){
+	@Publisher(channel = "outboundTwitterUpdates")
+	public String sendTwitterDirectMessage( @Payload String status ){
 	  return status ;
 	}
 

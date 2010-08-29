@@ -13,9 +13,9 @@ public class Main {
 
 		SocialMediaPublisherService socialMediaPublisherService = applicationContext.getBean( SocialMediaPublisherService.class ) ;
 		
-		socialMediaPublisherService.sendXMPPMessage( "mario.gray@gmail.com", "hello world at " + new Date()) ;
+	 	socialMediaPublisherService.sendXMPPMessage( "mario.gray@gmail.com", "hello world at " + new Date()) ;
 
-		socialMediaPublisherService.sendTwitterDirectMessage( "mariogray", "what's up dude?");
+		socialMediaPublisherService.sendTwitterDirectMessage( "Hello, world!");
 
 
 		while( true)

@@ -61,9 +61,9 @@
 								consumer-secret="${twitter.oauth.consumerSecret}" access-token="${twitter.oauth.accessToken}"
 								access-token-secret="${twitter.oauth.accessTokenSecret}" />
 
-	<channel id="outboundTwitterDirectMessages"/>
+	<channel id="outboundTwitterUpdates"/>
 
-	<twitter:outbound-dm-channel-adapter twitter-connection="twitterConnection" channel="outboundTwitterDirectMessages"/>
+	<twitter:outbound-update-channel-adapter twitter-connection="twitterConnection" channel="outboundTwitterUpdates"/>
 
 
 
