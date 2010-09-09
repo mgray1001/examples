@@ -15,7 +15,7 @@ public class Main {
 		
 	 	socialMediaPublisherService.sendXMPPMessage( "mario.gray@gmail.com", "hello world at " + new Date()) ;
 
-		socialMediaPublisherService.sendTwitterDirectMessage( "Hello, world!");
+		socialMediaPublisherService.tweet( "Hello, world!");
 
 
 		while( true)

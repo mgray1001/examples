@@ -3,7 +3,6 @@ package org.sudoinit5.mgray.springintegration.examples.demo25;
 import org.springframework.integration.annotation.Header;
 import org.springframework.integration.annotation.Payload;
 import org.springframework.integration.aop.Publisher;
-import org.springframework.integration.twitter.TwitterHeaders;
 import org.springframework.integration.xmpp.XmppHeaders;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class SocialMediaPublisherService {
 
-	@Publisher(channel = "outboundTwitterUpdates")
-	public String sendTwitterDirectMessage( @Payload String status ){
-	  return status ;
-	}
+	@Publisher( channel = "outboundTwitterUpdates")
+	public String tweet ( @Payload String status ){ return status;}
 
 	@Publisher(channel = "outboundIM")
-	public void  sendXMPPMessage( @Header(XmppHeaders.CHAT_TO_USER) String xmppUser , @Payload String messageToSend )  {
-
-	}
+	public String  sendXMPPMessage( @Header(XmppHeaders.CHAT_TO_USER) String xmppUser , @Payload String messageToSend )  {    return messageToSend;
+ 	}
 }

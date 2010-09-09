@@ -11,8 +11,9 @@
              http://www.springframework.org/schema/integration/jms http://www.springframework.org/schema/integration/jms/spring-integration-jms-2.0.xsd
              http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file-2.0.xsd">
 
-
-
+  <!--
+   <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples.demo2"/>
+   -->
     <context:annotation-config/>
 
 	<poller default="true" fixed-rate="1000"/>
@@ -25,8 +26,7 @@
 	<beans:bean class="org.sudoinit5.mgray.springintegration.examples.demo2.SimpleSendingClient"/>
 
 	<service-activator input-channel="inboundChannel" ref="listener" />
-
-	<beans:bean id="listener" class="org.sudoinit5.mgray.springintegration.examples.demo2.MessageListener"/>
+	    <beans:bean id="listener" class="org.sudoinit5.mgray.springintegration.examples.demo2.MessageListener"/>
 
 
 </beans:beans>

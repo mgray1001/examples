@@ -12,4 +12,7 @@ public interface GatewayMediaService {
 	@Gateway(requestChannel = "outboundIM" )
 	void sendIM(@Header(XmppHeaders.CHAT_TO_USER) String xmppHandle , @Payload String body)  ;
 
+   // TODO write Message sendManual
+    
+
 }

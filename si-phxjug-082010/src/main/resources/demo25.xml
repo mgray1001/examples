@@ -21,49 +21,49 @@
 						http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.0.xsd">
 
 
-	<beans:bean class="org.springframework.integration.aop.PublisherAnnotationBeanPostProcessor"/>
+    <beans:bean class="org.springframework.integration.aop.PublisherAnnotationBeanPostProcessor"/>
 
-	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<beans:property name="locations">
-			<beans:list>
-				<beans:value>file:///${user.home}/Desktop/twitter.properties</beans:value>
-				<beans:value>file:///${user.home}/Desktop/xmpp.properties</beans:value>
-			</beans:list>
-		</beans:property>
-	</beans:bean>
+    <beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <beans:property name="locations">
+            <beans:list>
+                <beans:value>twitter.properties</beans:value>
+                <beans:value>xmpp.properties</beans:value>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
 
     <context:component-scan base-package="org.sudoinit5.mgray.springintegration.examples.demo25"/>
 
     <context:annotation-config/>
 
 
-	<!-- XMPP example -->
-	<xmpp:xmpp-connection
-		id="xmppConn"
-		user="${user.2.login}"
-		subscription-mode="accept_all"
-		password="${user.2.password}"
-		host="${user.2.host}"
-		port="${user.2.port}"
-		resource="${user.2.resource}"
-		sasl-mechanism-supported="${user.2.sasl.mechanism}"
-		sasl-mechanism-supported-index="${user.2.sasl.index}"
-		service-name="${user.2.service}"
-	/>
+    <!-- XMPP example -->
+    <xmpp:xmpp-connection
+        id="xmppConn"
+        user="${user.2.login}"
+        subscription-mode="accept_all"
+        password="${user.2.password}"
+        host="${user.2.host}"
+        port="${user.2.port}"
+        resource="${user.2.resource}"
+        sasl-mechanism-supported="${user.2.sasl.mechanism}"
+        sasl-mechanism-supported-index="${user.2.sasl.index}"
+        service-name="${user.2.service}"
+    />
 
-	<channel id="outboundIM"/>
+    <channel id="outboundIM"/>
 
-	<xmpp:message-outbound-channel-adapter channel="outboundIM" xmpp-connection="xmppConn"/>
+    <xmpp:message-outbound-channel-adapter channel="outboundIM" xmpp-connection="xmppConn"/>
 
 
-	<!-- Twitter -->
-	<twitter:twitter-connection id="twitterConnection" consumer-key="${twitter.oauth.consumerKey}"
-								consumer-secret="${twitter.oauth.consumerSecret}" access-token="${twitter.oauth.accessToken}"
-								access-token-secret="${twitter.oauth.accessTokenSecret}" />
+    <!-- Twitter -->
+    <twitter:twitter-connection id="twitterConnection" consumer-key="${twitter.oauth.consumerKey}"
+                                consumer-secret="${twitter.oauth.consumerSecret}" access-token="${twitter.oauth.accessToken}"
+                                access-token-secret="${twitter.oauth.accessTokenSecret}" />
 
-	<channel id="outboundTwitterUpdates"/>
+    <channel id="outboundTwitterUpdates"/>
 
-	<twitter:outbound-update-channel-adapter twitter-connection="twitterConnection" channel="outboundTwitterUpdates"/>
+    <twitter:outbound-update-channel-adapter twitter-connection="twitterConnection" channel="outboundTwitterUpdates"/>
 
 
 

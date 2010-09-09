@@ -9,7 +9,7 @@ public class Main {
 
 		GatewayMediaService gatewayMediaService = classPathXmlApplicationContext.getBean(GatewayMediaService.class) ;
 
-		gatewayMediaService.sendIM( "mario.gray@gmail.com" , "Donkey!");
+		gatewayMediaService.sendIM( "mario.gray@gmail.com" , "Hello, all!");
 
 		 
 
