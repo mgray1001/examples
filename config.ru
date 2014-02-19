@@ -1,6 +1,6 @@
-require './app'
-require './middlewares/chat_backend'
+require './pong_app'
+require './middlewares/pong_backend'
 
-use ChatDemo::ChatBackend
+use PongDemo::PongBackend
 
-run ChatDemo::App
+run PongDemo::PongApp
